@@ -12,7 +12,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
  * @ORM\DiscriminatorColumn(name="discr", type="string")
  * @ORM\DiscriminatorMap({"page" = "Page", "page_artcile" = "PageArticle", "page_static" = "PageStatic"})
  */
-class Page
+abstract class Page
 {
     /**
      * @ORM\Id
