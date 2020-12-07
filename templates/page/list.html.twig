@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<div class="container">
+    <div class="d-flex justify-content-between my-4">
+        <h2 class="">Page list <span style="font-size:1.2rem;">({{ list|length }})</span></h2>
+         <a class="navbar-brand" href="{{ path('add') }}">Add page</a>
+    </div>
+    <ul class="list-unstyled">
+        {% for page in list %}
+            <li class="mb-1">
+                <div class="d-flex justify- left">
+                    <div class="mr-3 pt-2">
+                        <p>Id: {{page.id}}</p><a href="{{ path('show', {url: page.url}) }}">{{ page.title }}</a>
+                    </div>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

@@ -1,0 +1,12 @@
+<div class="container">
+  <div>
+   <div style="box-shadow: 2px 3px 9px 4px rgba(0,0,0,0.04);">
+        <h2>{{page.title|capitalize}}</h2>
+        <img src="{{asset(page.image)}}"/>
+        <div>
+            {{page.content}}
+        </div>
+        <p>{{page.publishdate|date}}</p>
+        </div>
+    </div>
+</div>
