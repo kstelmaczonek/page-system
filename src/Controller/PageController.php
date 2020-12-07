@@ -17,13 +17,19 @@ use App\Entity\PageStatic;
 
 class PageController extends AbstractController
 {
+    /**
+     * @var array
+     */
     private $availbleTypes = ['page_static' => PageStaticFormType::class, 'page_article' => PageArticleFormType::class];
+    /**
+     * @var array
+     */
     private $availbleEntities = ['page_static' => PageStatic::class, 'page_article' => PageArticle::class];
 
     /**
      * @Route("/", name="list")
      */
-    public function list(EntityManagerInterface $entityManager)
+    public function list(EntityManagerInterface $entityManager): Response
     {
         $repository = $entityManager->getRepository(Page::class);
         $list = $repository->findAll();
@@ -36,7 +42,7 @@ class PageController extends AbstractController
     /**
      * @Route("/add" , name="add")
      */
-    public function add(Request $request)
+    public function add(Request $request): Response
     {
         $form = $this->createFormBuilder()
         
@@ -83,7 +89,7 @@ class PageController extends AbstractController
     /**
      * @Route("/{url}", name="show")
      */
-    public function show(Page $page)
+    public function show(Page $page): Response
     {
         $template = 'page/show/' . strtolower(str_replace('App\Entity\\','', get_class($page))) . '.html.twig';
 
@@ -92,5 +98,4 @@ class PageController extends AbstractController
             'template' => $template,
         ]);
     }
-    
 }
